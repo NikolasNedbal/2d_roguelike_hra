@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1536199151250140371}
   - component: {fileID: 7733318850191047065}
   - component: {fileID: 5455645342578234306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 140595193831829238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: midPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

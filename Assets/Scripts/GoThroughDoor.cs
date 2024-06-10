@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GoThroughDoor : MonoBehaviour
 {
-    [SerializeField] private int sceneId = 1;
+    [SerializeField] private int sceneId;
     //[SerializeField] private static string ronin = "Ronin";
     //[SerializeField] private static string mage = "Mage";
     private GameObject player;
@@ -21,16 +21,24 @@ public class GoThroughDoor : MonoBehaviour
     [SerializeField]
     private float cRange;
 
+    private Scene scene;
+
+    private FadeLoader fade;
+
+    private int wentThrough = 0;
     // Start is called before the first frame update
     void Start()
     {
+        fade = GameObject.FindGameObjectWithTag("Fade").GetComponent<FadeLoader>();
+        scene = SceneManager.GetActiveScene();
         FindLevelManager();
+        FindSceneId();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.E)) 
+        if (Input.GetKey(KeyCode.E))
         {
             ChangeScene(sceneId);
         }
@@ -39,6 +47,11 @@ public class GoThroughDoor : MonoBehaviour
         {
             unlocked = spr[1].unlockos;
         }
+    }
+
+    private void FindSceneId() 
+    {
+        sceneId = scene.buildIndex+1;
     }
 
     private void FindLevelManager()
@@ -70,12 +83,23 @@ public class GoThroughDoor : MonoBehaviour
 
     private void ChangeScene(int sceneId)
     {
-        FindPlayer();
+        if (wentThrough == 0)
+        {
+            FindPlayer();
+        }
+            
         if (player != null && unlocked == true)
         {
+            fade.ArrestThisMan();
+            fade.HeTalksInMath();
             SceneManager.LoadScene(sceneId);
-            DontDestroyOnLoad(player);
-            DontDestroyOnLoad(cam);
+            fade.transition.SetTrigger("LockOut");
+            if (wentThrough == 0)
+            {
+                DontDestroyOnLoad(player);
+                DontDestroyOnLoad(cam);
+                wentThrough = 1;
+            }
         }
     }
     private void OnDrawGizmosSelected()

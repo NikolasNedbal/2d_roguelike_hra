@@ -164,7 +164,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LeftClick_Sprite_0: 2351258277262822248
+      LeftClick_Sprite_1: 8048171343674297249
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

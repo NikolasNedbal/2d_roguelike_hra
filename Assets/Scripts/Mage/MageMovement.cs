@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MageMovement : PlayerMovement
 {
-    //protected new float dashingPower = 15f;
-
     [SerializeField] private float Radius;
     [SerializeField] GameObject BashAbleObj;
     private bool NearToBashAbleObj;
@@ -31,33 +29,33 @@ public class MageMovement : PlayerMovement
     // Update is called once per frame
     void Update()
     {
-        
 
-        if (isDashing)
+
+        /*if (isDashing)
         {
             return;
-        }
+        }*/
 
-        //Attack();
+        Attack();
         RunAndJump();
         Bash();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        /*if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
-        }
+        }*/
     }
 
     protected new void RunAndJump()
     {
-        
+
         moveSpeed = Input.GetAxisRaw("Horizontal") * speed;
         /*if (IsBashing == false)
         {
             rb.velocity = new Vector2(moveSpeed * Time.deltaTime, rb.velocity.y);
         }*/
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && airborne == false)
+        if (Input.GetKeyDown(KeyCode.Space) && airborne == false)
         {
             if (doubleJump == false)
             {
@@ -95,7 +93,7 @@ public class MageMovement : PlayerMovement
         {
             anim.SetFloat("Speed", Mathf.Abs(moveSpeed));
         }*/
-        
+
 
         //flipovani spritu pri pohybu
         if (moveSpeed < 0)

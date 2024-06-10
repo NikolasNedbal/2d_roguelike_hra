@@ -18,7 +18,7 @@ public class MageProjectile : MonoBehaviour
     {
         IDamageable damageable = collision.GetComponent<IDamageable>();
 
-        if(damageable != null)
+        if(damageable != null && !collision.CompareTag("Player"))
         {
             damageable.Damage(damageAmount);
             Debug.Log("hit");

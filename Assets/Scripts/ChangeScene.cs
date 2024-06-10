@@ -10,8 +10,8 @@ public class ChangeScene : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
-    [SerializeField]
-    private GameObject player2;
+
+    private GameObject activePlayer;
 
     [SerializeField]
     private Camera mainCamera;
@@ -19,7 +19,7 @@ public class ChangeScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -30,10 +30,26 @@ public class ChangeScene : MonoBehaviour
 
     public void GoToScene()
     {
-        SceneManager.LoadScene(sceneId);
-        player.SetActive(true);
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(player2);
+        if(!player.activeInHierarchy)
+        {
+            StartCoroutine(load());
+        }
+        else
+        {
+            //SceneManager.LoadScene(sceneId);
+        }
+        
+    }
+
+    private IEnumerator load()
+    {
+        Instantiate(player);
+        activePlayer = GameObject.FindGameObjectWithTag("Player");
+        DontDestroyOnLoad(activePlayer);
         DontDestroyOnLoad(mainCamera);
+
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(sceneId);
     }
 }

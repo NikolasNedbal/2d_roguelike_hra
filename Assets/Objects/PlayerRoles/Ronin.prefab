@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3415261032856828057}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: isGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5184238282045365207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackTr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5590815355889577619}
   - component: {fileID: 9192830931996328987}
   - component: {fileID: 2068648980090378298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +302,37 @@ MonoBehaviour:
     m_RotationOrder: 4
   ropeProgressionSpeed: 5
   isGrappling: 1
+--- !u!1 &6271358850975608534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5434068565545721418}
+  m_Layer: 8
+  m_Name: CameraFollowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5434068565545721418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6271358850975608534}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2642305413632186778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6555730729496606643
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7036397722581743784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2506767933423773322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackTrL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,9 +413,10 @@ GameObject:
   - component: {fileID: 2833369791333440580}
   - component: {fileID: 1830065602635434187}
   - component: {fileID: 499280165230236303}
-  m_Layer: 0
+  - component: {fileID: 631378816279003933}
+  m_Layer: 8
   m_Name: Ronin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,6 +438,8 @@ Transform:
   - {fileID: 5184238282045365207}
   - {fileID: 2506767933423773322}
   - {fileID: 6811948293447352204}
+  - {fileID: 5434068565545721418}
+  - {fileID: 9013489243047788375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1556566200547541503
@@ -520,7 +554,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 3
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -545,13 +579,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0268be8b8920045b71dc0350b82ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMultiplier: 0
   speed: 7.5
+  rb: {fileID: 0}
   groundChecker: {fileID: 3415261032856828057}
   anim: {fileID: 2549156860165223109}
-  jumpForce: 7
+  jumpForce: 9
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   player: {fileID: 2642305413632186778}
   tr: {fileID: 2833369791333440580}
 --- !u!95 &2549156860165223109
@@ -728,9 +764,142 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.97
+  m_Distance: 192.33992
   m_DampingRatio: 1
   m_Frequency: 1
+--- !u!114 &631378816279003933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492774884422710711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc55b6716e34e54a83a8260fd5cebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHp: 0
+--- !u!1 &7744612824984235856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9013489243047788375}
+  - component: {fileID: 4488508910528839588}
+  - component: {fileID: 6963428268076833305}
+  - component: {fileID: 5642837664694900508}
+  m_Layer: 0
+  m_Name: stabanim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9013489243047788375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744612824984235856}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.79431355, y: -0.030743282, z: 0}
+  m_LocalScale: {x: 0.26471427, y: 0.17285, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2642305413632186778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4488508910528839588
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744612824984235856}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 1
+--- !u!95 &6963428268076833305
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744612824984235856}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd6227a300f16ce4caa15141f3fcfc8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5642837664694900508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744612824984235856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e14a72c4c62ff448692a8d63e40780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8194190705557267579
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6811948293447352204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +943,7 @@ GameObject:
   - component: {fileID: 3930274435445688068}
   - component: {fileID: 8062990926399009088}
   - component: {fileID: 4958308105422630729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GrapGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,8 +959,8 @@ Transform:
   m_GameObject: {fileID: 9138765927853946668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.365, y: -0.007, z: 0}
-  m_LocalScale: {x: 0.10269464, y: 0.10269464, z: 0.10267425}
+  m_LocalPosition: {x: 0.285, y: 0.015, z: 0}
+  m_LocalScale: {x: 0.045605663, y: 0.045605663, z: 0.045597635}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7036397722581743784}
@@ -838,7 +1007,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1255637322393689108, guid: 1626638de99e5e745bf866bf0c775f3a, type: 3}
+  m_Sprite: {fileID: 7699978436774145253, guid: ab02825e8bcc60248bb377781a40a200, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float speedMultiplier;
+
     [SerializeField]
     public float speed;
     protected float moveSpeed = 0f;
-    protected Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [SerializeField]
     protected Transform groundChecker;
@@ -30,21 +34,21 @@ public class PlayerMovement : MonoBehaviour
     protected bool airborne = false;
     protected bool doubleJump = false;
 
-    protected bool canDash = true;
+    /*protected bool canDash = true;
     protected bool isDashing;
     protected float dashingPower = 10f;
     protected float dashingTime = 0.2f;
-    protected float dashingCooldown = 1f;
+    protected float dashingCooldown = 1f;*/
 
     [SerializeField]
-    protected TrailRenderer tr;
+    public TrailRenderer tr;
 
     protected bool isFalling = false;
     protected bool isAirborne = false;
 
     protected float previousYPosition;
 
-    protected float attackCD = 0.3f;
+    protected float attackCD = 0.4f;
     protected bool canAttack = true;
 
     private bool isLookingLeft = false;
@@ -53,29 +57,58 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speedMultiplier = 1;
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponent<TrailRenderer>();
         anim = GetComponent<Animator>();
         spRen = GetComponent<SpriteRenderer>();
 
         previousYPosition = player.position.y;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDashing)
+        //Debug.Log("MULTIPLIER: " + speedMultiplier);
+        if (Input.GetKey(KeyCode.B))
         {
-            return;
+            SceneManager.LoadScene(0);
         }
 
         Attack();
         RunAndJump();
+        Debug.Log(rb.gravityScale);
+    }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("coll"))
         {
-            StartCoroutine(Dash());
+            ContactPoint2D[] contacts = new ContactPoint2D[collision.contactCount];
+            collision.GetContacts(contacts);
+
+            bool playerOnTop = false;
+            foreach (ContactPoint2D contact in contacts)
+            {
+                if (contact.normal.y > 0.5f)
+                {
+                    playerOnTop = true;
+                    break;
+                }
+            }
+
+            if (!playerOnTop)
+            {
+                float wallSlideSpeed = -speed * 1f;
+                rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed);
+            }
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        gameObject.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
 
     protected void Attack()
@@ -98,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected void RunAndJump() {
 
-        moveSpeed = Input.GetAxisRaw("Horizontal") * speed;
+        moveSpeed = Input.GetAxisRaw("Horizontal") * speed * speedMultiplier;
 
         if (Input.GetKeyDown(KeyCode.Space) && airborne == false)
         {
@@ -121,8 +154,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 movement = new Vector2(moveSpeed, rb.velocity.y);
             rb.velocity = movement;
         }
-
-        IsGrounded();
+        IsGrounded();        
 
         //animace
         if (airborne)
@@ -137,7 +169,6 @@ public class PlayerMovement : MonoBehaviour
         //flipovani spritu pri pohybu
         if (moveSpeed < 0)
         {
-            //spRen.flipX = true;
             if (isLookingRight && Input.GetKey(KeyCode.A))
             {
                 isLookingRight = false;
@@ -198,31 +229,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Falling", false);
         }
     }
-
-    protected IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float ogGravity = rb.gravityScale;
-        rb.gravityScale = 0;
-        if(Input.GetAxisRaw("Horizontal") > 0)
-        {
-            rb.velocity = new Vector2(player.localScale.x * dashingPower, 0f);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-player.localScale.x * dashingPower, 0f);
-        }
-        
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = ogGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-
     /*private void OnDrawGizmos()
     {G
         Gizmos.color = Color.red;

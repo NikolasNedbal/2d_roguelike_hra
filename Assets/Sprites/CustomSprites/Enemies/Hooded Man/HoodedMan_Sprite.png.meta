@@ -308,7 +308,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HoodedMan_Sprite_0: 1957881491712984086
+      HoodedMan_Sprite_1: 3288304591645211281
+      HoodedMan_Sprite_2: 7475306787386846275
+      HoodedMan_Sprite_3: -2788704192415156118
+      HoodedMan_Sprite_4: 649794267886959756
+      HoodedMan_Sprite_5: -8964972936801476400
+      HoodedMan_Sprite_6: 1331249694422998202
+      HoodedMan_Sprite_7: 6975858165384060430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

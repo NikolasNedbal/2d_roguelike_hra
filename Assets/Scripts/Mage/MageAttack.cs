@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MageAttack : MonoBehaviour
 {
+    [SerializeField] public Transform AttackTrL;
     public GameObject bullet;
     public Transform firePoint;
     public float bulletSpeed = 50;

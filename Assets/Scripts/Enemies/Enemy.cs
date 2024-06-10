@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    Transform targetPlayer = null;
     Transform target = null;
 
+    GameObject player;
+    PlayerAttack pa;
+    MageAttack ma;
+
     NavMeshAgent agent;
+
+    public bool isMoving { get; private set; } = false;
 
     Collider2D[] detectionRange;
 
@@ -17,6 +25,8 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        FindPlayer();
     }
 
     // Update is called once per frame
@@ -26,6 +36,13 @@ public class Enemy : MonoBehaviour
         FlipIfNeeded();
     }
 
+    void FindPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        pa = player.GetComponent<PlayerAttack>();
+        ma = player.GetComponent<MageAttack>();
+    }
+
     void FollowPlayer()
     {
         detectionRange = Physics2D.OverlapCircleAll(transform.position, 10f);
@@ -33,17 +50,25 @@ public class Enemy : MonoBehaviour
         {
             if (collider.CompareTag("Player"))
             {
-                target = collider.attachedRigidbody.transform;
+                if (pa != null)
+                {
+                    target = pa.attackTrL;
+                }
+                else
+                {
+                    target = ma.AttackTrL;
+                }
+                targetPlayer = collider.attachedRigidbody.transform;
                 agent.SetDestination(target.position);
-            }
+            } 
         }
     }
 
     void FlipIfNeeded()
     {
-        if(target != null)
+        if(targetPlayer != null)
         {
-            if (target.transform.position.x > transform.position.x)
+            if (targetPlayer.transform.position.x > transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }

@@ -6,7 +6,8 @@ public class Attack : MonoBehaviour
 {
     protected RaycastHit2D[] hits;
 
-    [SerializeField] protected Transform attackTr;
+    [SerializeField] public Transform attackTr;
+    [SerializeField] public Transform attackTrL;
     [SerializeField] protected float attackRng = 1.5f;
     [SerializeField] protected LayerMask attackableLayer;
 

@@ -14,5 +14,65 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 82b0fc7732da95a468bd31ba98e49f50
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 8115bc92ed78c6b47baf4ffe1692bb09
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 0a31fc5ed257c544db0cec36a90a100a
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 6ba759921bfba81479c39a986383d179
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: c98c2c4a87465004e9496cace0c87aa3
+  - enabled: 1
+    path: Assets/Scenes/Level6.unity
+    guid: d300e6065ddf75a428d6fd1757ab4f7a
+  - enabled: 1
+    path: Assets/Scenes/Level7.unity
+    guid: 3f17faf1827a047418aac4ec25ba9937
+  - enabled: 1
+    path: Assets/Scenes/Level8.unity
+    guid: cb27436dbea3d4b4ea96cbb5b6caec4f
+  - enabled: 1
+    path: Assets/Scenes/Level9.unity
+    guid: 54ac26fa01dfb4046a9a04ffea74ef89
+  - enabled: 1
+    path: Assets/Scenes/Level10.unity
+    guid: d3c948233cc3a294180b0c4e10792371
+  - enabled: 1
+    path: Assets/Scenes/Level11.unity
+    guid: 235658a947148bf44b181b3b064b5c3a
+  - enabled: 1
+    path: Assets/Scenes/Level12.unity
+    guid: 144641946aebe26479cb2388ffc94603
+  - enabled: 1
+    path: Assets/Scenes/Level13.unity
+    guid: 95ae8571dcf82c54e9f346b2646be922
+  - enabled: 1
+    path: Assets/Scenes/Level14.unity
+    guid: 8ccf64831c7d76749bd41d7b0e9643a3
+  - enabled: 1
+    path: Assets/Scenes/Level15.unity
+    guid: b41634fe25e7c6b4fa484776365f543e
+  - enabled: 1
+    path: Assets/Scenes/Level16.unity
+    guid: e8ba5a4a782192b4887deea08b9d2ff5
+  - enabled: 1
+    path: Assets/Scenes/Level17.unity
+    guid: 4a81b6ba1a816a24faaab0d28687b91e
+  - enabled: 1
+    path: Assets/Scenes/Level18.unity
+    guid: fc34e00bdd1d8a645a17337b1168b7a6
+  - enabled: 1
+    path: Assets/Scenes/Level19.unity
+    guid: 37fe3d5fc86bf184b8fd8f6348771aea
+  - enabled: 1
+    path: Assets/Scenes/Level20.unity
+    guid: 050189962b200274799c1111dbe22725
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 3acdaf07d67e6694eaf750420628d23a
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

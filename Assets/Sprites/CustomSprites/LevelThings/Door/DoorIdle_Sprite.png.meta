@@ -308,7 +308,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DoorIdle_Sprite_0: 3960630222369955156
+      DoorIdle_Sprite_1: 8235191084620290019
+      DoorIdle_Sprite_2: 867738814463602692
+      DoorIdle_Sprite_3: 8542853272645829180
+      DoorIdle_Sprite_4: -5258057437565345319
+      DoorIdle_Sprite_5: 2799261321968234999
+      DoorIdle_Sprite_6: -9189002071119697811
+      DoorIdle_Sprite_7: 4764325255821790712
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

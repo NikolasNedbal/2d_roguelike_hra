@@ -8,7 +8,7 @@ public class EnviromentHp : MonoBehaviour, IDamageable
     protected float maxHp = 5f;
 
     protected float curHp;
-
+    protected bool isDead = false;
     public void Damage(float damageAmount)
     {
         curHp -= damageAmount;
@@ -25,8 +25,13 @@ public class EnviromentHp : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
+    protected void FakeDeath()
+    {
+        isDead = true;
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         curHp = maxHp;
     }

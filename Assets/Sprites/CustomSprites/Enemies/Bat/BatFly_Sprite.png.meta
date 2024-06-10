@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BatFly_Sprite_0: -446776760312724276
+      BatFly_Sprite_1: -5959302956242777956
+      BatFly_Sprite_2: 8863022796307548211
+      BatFly_Sprite_3: -6615989074926489269
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

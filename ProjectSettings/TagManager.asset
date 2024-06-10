@@ -8,6 +8,21 @@ TagManager:
   - Vegetation
   - Background
   - Enemy
+  - MageSkill
+  - RoninSkill
+  - Skill
+  - DialogueCanv
+  - Upgrade
+  - coll
+  - SkillManager
+  - SKC
+  - PUI
+  - Fade
+  - onHit
+  - PortalB
+  - PortalR
+  - ona
+  - sktxt
   layers:
   - Default
   - TransparentFX
@@ -20,7 +35,7 @@ TagManager:
   - Player
   - Grappable
   - Vegetation
-  - 
+  - Border
   - 
   - 
   - 
@@ -53,4 +68,7 @@ TagManager:
     locked: 0
   - name: Rope
     uniqueID: 2593459075
+    locked: 0
+  - name: Moth
+    uniqueID: 2555998781
     locked: 0

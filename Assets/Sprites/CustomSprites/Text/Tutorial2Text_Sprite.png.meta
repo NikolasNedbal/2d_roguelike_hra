@@ -164,7 +164,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tutorial2Text_Sprite_0: -1131073647488384319
+      Tutorial2Text_Sprite_1: -5251940807590911871
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,6 +11,11 @@ public class EnemyHp : MonoBehaviour, IDamageable
 
     public float curHp;
 
+    [SerializeField]
+    private int moneyDrop = 5;
+
+    public bool wantentodie = true;
+
     public void Damage(float damageAmount)
     {
         curHp -= damageAmount;
@@ -29,7 +34,11 @@ public class EnemyHp : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        Wallet wallet = GameObject.Find("Wallet(Clone)").GetComponent<Wallet>();
+        wallet.AddMoney(moneyDrop);
+        if(wantentodie){
+            gameObject.SetActive(false);
+        }
         //Destroy(gameObject);
     }
 

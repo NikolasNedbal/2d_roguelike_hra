@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject ronin;
-
-    [SerializeField]
-    private GameObject mage;
-
-    private Transform activePlayer;
+    private GameObject player;
 
     private float smoothSpeed = 1f;
+
+    private bool waited = false;
+
+    private Scene curScene;
+
+    private void Awake()
+    {
+        curScene = SceneManager.GetActiveScene();
+    }
 
     void Start()
     {
@@ -21,29 +25,26 @@ public class CameraFollow : MonoBehaviour
     }
     void Update()
     {
-        CheckActivePlayer();
+        WaitUntilSceneChanges();
     }
 
     void LateUpdate()
     {
-        if (activePlayer != null)
+        if (waited)
         {
-            Vector3 desiredPosition = new Vector3(activePlayer.position.x, activePlayer.position.y, transform.position.z);
+            Vector3 desiredPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothedPosition;
         }
     }
 
-    void CheckActivePlayer()
+    void WaitUntilSceneChanges()
     {
-        if(ronin.activeInHierarchy) 
+        if (curScene.buildIndex != 0 && !waited)
         {
-            activePlayer = ronin.transform;
+            player = GameObject.FindGameObjectWithTag("Player");
+
+            waited = true;
         }
-        else
-        {
-            activePlayer = mage.transform;
-        }
-        //activePlayer = ronin;
     }
 }

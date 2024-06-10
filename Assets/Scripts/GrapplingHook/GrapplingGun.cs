@@ -29,7 +29,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Distance:")]
     [SerializeField] private bool hasMaxDistance = false;
-    [SerializeField] private float maxDistnace = 20;
+    [SerializeField] private float maxDistnace = 30;
 
     private enum LaunchType
     {
@@ -40,7 +40,7 @@ public class GrapplingGun : MonoBehaviour
     [Header("Launching:")]
     [SerializeField] private bool launchToPoint = true;
     [SerializeField] private LaunchType launchType = LaunchType.Physics_Launch;
-    [SerializeField] private float launchSpeed = 1;
+    [SerializeField] private float launchSpeed = 2f;
 
     [Header("No Launch To Point")]
     [SerializeField] private bool autoConfigureDistance = false;
@@ -52,6 +52,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void Start()
     {
+        m_camera = Camera.main;
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
 

@@ -85,7 +85,7 @@ public class SpawnRandomObjects : MonoBehaviour
         // Spawn the object at a random position within the bounds
         Vector2 spawnPosition = new Vector2(
             Random.Range(combinedBounds.min.x, combinedBounds.max.x),
-            Random.Range(combinedBounds.min.y, combinedBounds.max.y)
+            Random.Range(combinedBounds.min.y+5, combinedBounds.max.y)
         );
 
         // Instantiate the object at the final spawn position
