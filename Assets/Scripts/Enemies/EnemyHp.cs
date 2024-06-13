@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class EnemyHp : MonoBehaviour, IDamageable
 {
     [SerializeField]
-    private float maxHp = 5f;
+    public float maxHp { get; private set; } = 5f;
 
     public float curHp;
 

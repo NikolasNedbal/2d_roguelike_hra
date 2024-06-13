@@ -8,6 +8,7 @@ public class EnemyHpBar : MonoBehaviour
     [SerializeField]
     private GameObject attachedEnemy;
     public Image healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,6 @@ public class EnemyHpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = (attachedEnemy.GetComponent<EnemyHp>().curHp/5);
+        healthBar.fillAmount = (attachedEnemy.GetComponent<EnemyHp>().curHp/ attachedEnemy.GetComponent<EnemyHp>().maxHp);
     }
 }
